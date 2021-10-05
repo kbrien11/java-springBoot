@@ -6,13 +6,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 public class state {
 
-	 public static String cities(String city) throws FileNotFoundException, IOException {
+
+	 public  List<location> cities() throws FileNotFoundException, IOException {
 		 List<List<String>> records = new ArrayList<>();
-		 String stateCode = null;
+		 List<location>locationList = new ArrayList<>();
+		 long id = 1L;
+		 String cityData = null;
+		 String stateData = null;
 		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrien\\OneDrive - Capgemini\\Desktop\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
 		     String line;
 		     while ((line = br.readLine()) != null) {
@@ -20,21 +29,26 @@ public class state {
 		         records.add(Arrays.asList(values));
 		     }
 		 }
+		
 	
-		for(List<String> x: records) {
-			if(x.get(0).contains(city)) {
-				System.out.println(x.get(0));
-				System.out.println(x.get(1));
-				System.out.println("hello" + city);
-				stateCode =x.get(1);
-			}
-			else {
-				System.out.println("City doesnt match");
-			}
-		}
-		return stateCode;
-				 
+		 for(List<String> x: records) {
+			cityData = x.get(0);
+			stateData = x.get(1);
+			location loc = new location(
+					id,
+					cityData,
+					stateData
+					);
+	
+			locationList.add(loc);
+			id +=1;
+		 }
+		 
+		 System.out.println(locationList);
+		 return locationList;	 
 	 }
+	 
+	
 	 
 	
 	
