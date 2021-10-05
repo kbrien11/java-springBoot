@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,12 @@ public class weatherController {
 
 	 public static api api  = new api();
 	 
-	 public static state state = new state();
+	 public state state = new state();
+	 
+@Autowired
+locationRespository locationRepo;
+	 
+	 
 	 
 	 @CrossOrigin(origins = "http://localhost:3000")
 	 @JsonSetter("data")
@@ -30,10 +36,22 @@ public class weatherController {
 	public  Object getWeatherData(@PathVariable String city) {
 		Object ex = null;
 		System.out.println("trying to get the weather data");
+		 
 		try {
-			Object output = api.apiData(city);
-			System.out.println(state.cities(city));
-			ex = output;
+		     List<location> lists = state.cities();
+		     locationRepo.saveAllAndFlush(lists);
+		     if(locationRepo.findByCity(city).size() >0) {
+		    		System.out.println(locationRepo.findByCity(city));
+					String location = locationRepo.findByCity(city).get(0).getState();
+					
+					Object output = api.apiData(city,location);
+			     
+					ex = output;
+		     }
+		     else {
+		    	 System.out.println("somethins is wrong with the DB");
+		     }
+		
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
