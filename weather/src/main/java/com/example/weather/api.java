@@ -1,5 +1,6 @@
 package com.example.weather;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,17 +19,20 @@ import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
  public class api {
 	 
-	 public static state state = new state();
+
+	 
+	 @Autowired
+	 locationRespository locationRepo;
 
 
   @SuppressWarnings("rawtypes")
- public static Object apiData( String city) throws IOException{
+ public  Object apiData(Long id, String city, String state) throws IOException{
 	ArrayList<Object> data = new ArrayList<Object>();
-	System.out.println(city);
 	String ex = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&units=imperial&appid=27b3ec19c7d34c1bcca082098b7a60a7", city);
     URL quote_endpoint = new URL(ex);
 	HttpURLConnection connection = (HttpURLConnection) quote_endpoint.openConnection();
@@ -48,11 +53,17 @@ import org.json.simple.parser.ParseException;
            
             try {
 				JSONObject json = (JSONObject) parser.parse(jsonResponseData);
+				data.add(id);
 				data.add(json.get("name"));
-				data.add(state.cities(city));
+				 data.add(state);
+//				for(locati on x:location) {
+//					System.out.println(x);
+//				}
+//				
+//				data.add(location);
 //				looping throug object main to get the temp
 				  Object temp= json.get("main");
-	
+	              
 				 data.add((((HashMap) temp).get("temp")));
 				 
 //				 getting wind data
