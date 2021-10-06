@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,13 @@ public class weatherController {
 	 public static api api  = new api();
 	 
 	 public state state = new state();
+	 
+	 private locationService service;
+	 
+	@Autowired
+	public void locationController(locationService service) {
+		this.service = service;
+	}
 	 
 @Autowired
 locationRespository locationRepo;
@@ -38,13 +47,20 @@ locationRespository locationRepo;
 		System.out.println("trying to get the weather data");
 		 
 		try {
-		     List<location> lists = state.cities();
-		     locationRepo.saveAllAndFlush(lists);
+			
+			if(locationRepo.findAll().size()<=0) {
+				 List<location> lists = state.cities();
+			     locationRepo.saveAllAndFlush(lists);
+			}
+			else {
+				System.out.println(" citites have already been loaded");
+			}
+		
 		     if(locationRepo.findByCity(city).size() >0) {
 		    		System.out.println(locationRepo.findByCity(city));
 					String location = locationRepo.findByCity(city).get(0).getState();
-					
-					Object output = api.apiData(city,location);
+					Long id = locationRepo.findByCity(city).get(0).getId();
+					Object output = api.apiData(id,city,location);
 			     
 					ex = output;
 		     }
@@ -59,28 +75,12 @@ locationRespository locationRepo;
 		return ex;
 	}
 	 
-//	 @RequestMapping("/cities")
-//	 public static List cities() throws FileNotFoundException, IOException {
-//		 List<List<String>> records = new ArrayList<>();
-//	
-//		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrien\\OneDrive - Capgemini\\Desktop\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
-//		     String line;
-//		     while ((line = br.readLine()) != null) {
-//		         String[] values = line.split(",");
-//		         records.add(Arrays.asList(values));
-//		     }
-//		 }
-//	
-//		for(List<String> x: records) {
-//			System.out.println(x.get(0));
-//		}
-//		return records;
-//				 
-//	 }
-//	 
-//	 
-//	 public static void main (String [] args) throws FileNotFoundException, IOException {
-//		 cities();
-//		 
-//	 }
-}
+	 @CrossOrigin(origins = "http://localhost:3000")
+	 @PostMapping()
+	 @RequestMapping("/cities")
+	 public void addNewLocation(@RequestBody location location) throws Exception {
+		 service.addNewLocation(location);
+	 }
+	 
+	 
+	 	
