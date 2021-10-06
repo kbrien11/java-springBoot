@@ -19,7 +19,7 @@ public class state {
 	 public  List<location> cities() throws FileNotFoundException, IOException {
 		 List<List<String>> records = new ArrayList<>();
 		 List<location>locationList = new ArrayList<>();
-		 long id = 1L;
+//		 long id = 1L;
 		 String cityData = null;
 		 String stateData = null;
 		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrien\\OneDrive - Capgemini\\Desktop\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
@@ -35,13 +35,13 @@ public class state {
 			cityData = x.get(0);
 			stateData = x.get(1);
 			location loc = new location(
-					id,
+					
 					cityData,
 					stateData
 					);
 	
 			locationList.add(loc);
-			id +=1;
+		
 		 }
 		 
 		 System.out.println(locationList);
