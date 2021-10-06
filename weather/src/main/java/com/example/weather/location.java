@@ -5,16 +5,18 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Location")
+@Table(name = "cities")
 public class location {
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "city")
 	private String city;
@@ -52,6 +54,10 @@ public location(long id,String city , String state) {
 	
 	public  String getState() {
 		return this.state;
+	}
+	
+	public String getCity() {
+		return this.city = city;
 	}
 	public  String getState(String city) {
 		return this.state;
