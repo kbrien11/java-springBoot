@@ -81,6 +81,12 @@ locationRespository locationRepo;
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
+	
+	 @CrossOrigin(origins = "http://localhost:3000")
+	 @RequestMapping( value = "/cities/update" , method = RequestMethod.PUT)
+	 public void updateLocation( @RequestBody location location) throws Exception {
+		 locationRepo.save(location);
+	 }
 	 
 	 
 	 	
