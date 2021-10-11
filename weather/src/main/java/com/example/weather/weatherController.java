@@ -63,7 +63,8 @@ locationRespository locationRepo;
 		    		System.out.println(locationRepo.findByCity(city));
 					String location = locationRepo.findByCity(city).get(0).getState();
 					Long id = locationRepo.findByCity(city).get(0).getId();
-					Object output = api.apiData(id,city,location);
+			     		int fave = locationRepo.findByCity(city).get(0).getFavorite();
+					Object output = api.apiData(id,city,location,fave);
 			     
 					ex = output;
 		     }
@@ -111,6 +112,7 @@ locationRespository locationRepo;
 		String city = null;
 		String state = " ";
 		Long id = 0l;
+		int favorite ;
 		for( location x:list){
 			int fave = x.getFavorite();
 			
@@ -118,7 +120,8 @@ locationRespository locationRepo;
 				id = x.getId();
 				city = x.getCity();
 				state = x.getState();
-				Object output = api.apiData(id,city,state);
+				favorite = x.getFavorite();
+				Object output = api.apiData(id,city,state,favorite);
 				locationList.add(output);
 				
 			}
