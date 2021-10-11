@@ -14,10 +14,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -42,7 +45,7 @@ locationRespository locationRepo;
 	 @CrossOrigin(origins = "http://localhost:3000")
 	 @JsonSetter("data")
 	@RequestMapping("/{city}")
-	public  Object getWeatherData(@PathVariable String city) {
+	public  Object getWeatherData(@PathVariable String city) throws Exception {
 		Object ex = null;
 		System.out.println("trying to get the weather data");
 		 
@@ -65,7 +68,9 @@ locationRespository locationRepo;
 					ex = output;
 		     }
 		     else {
-		    	 System.out.println("somethins is wrong with the DB");
+		    	Exception errorMessage =   new Exception(city + " not found in the DB");
+		    	 return errorMessage;
+		    	 
 		     }
 		
 		} catch(IOException e) {
@@ -81,12 +86,48 @@ locationRespository locationRepo;
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
-	
+	 
+	 
+	 @CrossOrigin(origins = "http://localhost:3000")
+	 @DeleteMapping()
+	 @RequestMapping("/cities/{id}")
+	 public void deleteLocation(@PathVariable Long id ) throws Exception{
+		 service.delete(id);
+	 }
+	 
+	 
 	 @CrossOrigin(origins = "http://localhost:3000")
 	 @RequestMapping( value = "/cities/update" , method = RequestMethod.PUT)
 	 public void updateLocation( @RequestBody location location) throws Exception {
 		 locationRepo.save(location);
 	 }
 	 
+	 @CrossOrigin(origins = "http://localhost:3000")
+	 @PostMapping()
+	 @RequestMapping("/cities/favorite")
+	 public  List<Object> getFavorites() throws Exception {
+		 List<Object>locationList = new ArrayList<>(); 
+		List <location> list = locationRepo.findAll();
+		String city = null;
+		String state = " ";
+		Long id = 0l;
+		for( location x:list){
+			int fave = x.getFavorite();
+			
+			if(fave > 0) {
+				id = x.getId();
+				city = x.getCity();
+				state = x.getState();
+				Object output = api.apiData(id,city,state);
+				locationList.add(output);
+				
+			}
+			
+		}
+		System.out.println(locationList);
+		return locationList;
+	 }
 	 
 	 	
+
+}
