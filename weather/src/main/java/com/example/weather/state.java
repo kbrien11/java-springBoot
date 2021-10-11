@@ -22,6 +22,7 @@ public class state {
 //		 long id = 1L;
 		 String cityData = null;
 		 String stateData = null;
+		
 		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrien\\OneDrive - Capgemini\\Desktop\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
 		     String line;
 		     while ((line = br.readLine()) != null) {
@@ -34,10 +35,12 @@ public class state {
 		 for(List<String> x: records) {
 			cityData = x.get(0);
 			stateData = x.get(1);
+			
 			location loc = new location(
 					
 					cityData,
 					stateData
+					
 					);
 	
 			locationList.add(loc);
