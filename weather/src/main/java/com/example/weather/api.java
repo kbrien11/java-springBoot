@@ -76,7 +76,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 				descriptionList.addAll((Collection<? extends HashMap>) weather);
 				for(int i =0;i<descriptionList.size();i++) {
 	                data.add(descriptionList.get(i).get("description"));
-	                
+	                data.add(descriptionList.get(i).get("icon"));
 				}
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
