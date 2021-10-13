@@ -25,4 +25,14 @@ public class locationService {
 		return locationRepo.save(location);
 	}
 
+	public void delete(int id) throws Exception {
+		boolean exists=locationRepo.existsById(id);
+		if(!exists) {
+			throw new Exception("id is not in the database");
+		}
+		locationRepo.deleteById(id);
+	}
+
+
+
 }
