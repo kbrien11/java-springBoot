@@ -17,7 +17,7 @@ public class location {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@Column(name = "city")
 	private String city;
 	@Column(name = "state")
@@ -35,7 +35,7 @@ public class location {
 		this.state = state;
 
 	}
-public location(long id,String city , String state, int favorite) {
+public location(int id,String city , String state, int favorite) {
 		this.id = id;
 		this.city = city;
 		this.state = state;
@@ -47,10 +47,10 @@ public location(long id,String city , String state, int favorite) {
 		
 	}
 	
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
-	public long setId() {
+	public int setId() {
 		return this.id;
 	}
 	
