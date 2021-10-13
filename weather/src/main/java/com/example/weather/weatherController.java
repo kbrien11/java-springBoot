@@ -87,6 +87,12 @@ locationRespository locationRepo;
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
+	
+	 @CrossOrigin(origins = "https://weather-java.herokuapp.com/")
+	 @RequestMapping("/")
+	 public String home()  {
+		 return " hello world";
+	 }
 	 
 	 
 	 @CrossOrigin(origins = "http://localhost:3000")
