@@ -24,8 +24,8 @@ public class state {
 		 List<List<String>> records = new ArrayList<>();
 		 List<location>locationList = new ArrayList<>();
 //		 long id = 1L;
-		 String cityData = null;
-		 String stateData = null;
+		 String cityData = " ";
+		 String stateData = " ";
 		 try (InputStream inputStream = (InputStream) getClass().getResourceAsStream("/weatherInfo.csv");
 				    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 				    String contents = reader.lines()
