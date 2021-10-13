@@ -62,7 +62,7 @@ locationRespository locationRepo;
 		     if(locationRepo.findByCity(city).size() >0) {
 		    		System.out.println(locationRepo.findByCity(city));
 					String location = locationRepo.findByCity(city).get(0).getState();
-					Long id = locationRepo.findByCity(city).get(0).getId();
+					int id = locationRepo.findByCity(city).get(0).getId();
 			     		int fave = locationRepo.findByCity(city).get(0).getFavorite();
 					Object output = api.apiData(id,city,location,fave);
 			     
@@ -92,7 +92,7 @@ locationRespository locationRepo;
 	 @CrossOrigin(origins = "http://localhost:3000")
 	 @DeleteMapping()
 	 @RequestMapping("/cities/{id}")
-	 public void deleteLocation(@PathVariable Long id ) throws Exception{
+	 public void deleteLocation(@PathVariable int id ) throws Exception{
 		 service.delete(id);
 	 }
 	 
@@ -111,7 +111,7 @@ locationRespository locationRepo;
 		List <location> list = locationRepo.findAll();
 		String city = null;
 		String state = " ";
-		Long id = 0l;
+		int id = 0;
 		int favorite ;
 		for( location x:list){
 			int fave = x.getFavorite();
