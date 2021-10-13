@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface locationRespository extends JpaRepository<location,Long> {
+public interface locationRespository extends JpaRepository<location,Integer> {
 
 
     List<location> findByCity(String city);
