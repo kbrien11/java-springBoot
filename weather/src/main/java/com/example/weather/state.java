@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.omg.CORBA.portable.InputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 
 public class state {
@@ -24,15 +20,16 @@ public class state {
 		 List<List<String>> records = new ArrayList<>();
 		 List<location>locationList = new ArrayList<>();
 //		 long id = 1L;
-		 String cityData = " ";
-		 String stateData = " ";
-		 try (InputStream inputStream = (InputStream) getClass().getResourceAsStream("/weatherInfo.csv");
-				    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-				    String contents = reader.lines()
-				      .collect(Collectors.joining(System.lineSeparator()));
-				    records.add(Arrays.asList(contents));
-				}
+		 String cityData = null;
+		 String stateData = null;
 		
+		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrien\\OneDrive - Capgemini\\Desktop\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
+		     String line;
+		     while ((line = br.readLine()) != null) {
+		         String[] values = line.split(",");
+		         records.add(Arrays.asList(values));
+		     }
+		 }
 		
 	
 		 for(List<String> x: records) {
