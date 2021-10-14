@@ -31,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
   @SuppressWarnings("rawtypes")
- public  Object apiData(int id, String city, String state, int favorite) throws IOException{
+ public  Object apiData(int id, String city, String state , int favorite) throws IOException{
 	ArrayList<Object> data = new ArrayList<Object>();
 	String ex = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&units=imperial&appid=27b3ec19c7d34c1bcca082098b7a60a7", city);
     URL quote_endpoint = new URL(ex);
@@ -55,8 +55,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 				JSONObject json = (JSONObject) parser.parse(jsonResponseData);
 				data.add(id);
 				data.add(json.get("name"));
-				data.add(state);
-		     		data.add(favorite);
+				 data.add(state);
+				 data.add(favorite);
 //				for(locati on x:location) {
 //					System.out.println(x);
 //				}
@@ -72,11 +72,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 				 data.add((((HashMap) wind).get("speed")));
 //				looping thru object weather to get the weather type/description
 				Object weather = json.get("weather");
+				System.out.println(weather);
 				ArrayList<HashMap> descriptionList = new ArrayList<HashMap>();
 				descriptionList.addAll((Collection<? extends HashMap>) weather);
 				for(int i =0;i<descriptionList.size();i++) {
 	                data.add(descriptionList.get(i).get("description"));
 	                data.add(descriptionList.get(i).get("icon"));
+	                
 				}
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
