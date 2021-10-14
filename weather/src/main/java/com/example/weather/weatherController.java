@@ -63,7 +63,7 @@ locationRespository locationRepo;
 		    		System.out.println(locationRepo.findByCity(city));
 					String location = locationRepo.findByCity(city).get(0).getState();
 					int id = locationRepo.findByCity(city).get(0).getId();
-			     		int fave = locationRepo.findByCity(city).get(0).getFavorite();
+					int fave = locationRepo.findByCity(city).get(0).getFavorite();
 					Object output = api.apiData(id,city,location,fave);
 			     
 					ex = output;
@@ -87,12 +87,13 @@ locationRespository locationRepo;
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
-	
+	 
 	 @CrossOrigin(origins = "https://weather-java.herokuapp.com/")
 	 @RequestMapping("/")
 	 public String home()  {
 		 return " hello world";
 	 }
+	 
 	 
 	 
 	 @CrossOrigin(origins = "http://localhost:3000")
@@ -108,6 +109,7 @@ locationRespository locationRepo;
 	 public void updateLocation( @RequestBody location location) throws Exception {
 		 locationRepo.save(location);
 	 }
+	 
 	 
 	 @CrossOrigin(origins = "http://localhost:3000")
 	 @PostMapping()
