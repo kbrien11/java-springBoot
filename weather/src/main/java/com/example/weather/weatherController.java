@@ -30,6 +30,8 @@ public class weatherController {
 	 
 	 public state state = new state();
 	
+		 public addCityToDatabase add = new addCityToDatabase();
+	
 	public static singleSearchApi singleApi  = new singleSearchApi();
 	 
 	 private locationService service;
@@ -53,9 +55,14 @@ locationRespository locationRepo;
 		 
 		try {
 			
+			
+			List<location> lists = add.cities(city);
+			locationRepo.saveAllAndFlush(lists);
+			
+			 if(locationRepo.findByCity(city).size() >0) {
 			Object data = singleApi.apiData(city);
 			ex = data;
-			locationRepo.saveTo((List<location>) ex);
+			 }
 	
 		
 		
