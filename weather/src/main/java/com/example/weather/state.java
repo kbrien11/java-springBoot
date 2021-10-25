@@ -23,7 +23,7 @@ public class state {
 		 String cityData = null;
 		 String stateData = null;
 
-		 try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\kbrie\\OneDrive\\Desktop\\java-springBoot-main\\weather\\src\\main\\java\\com\\example\\weather\\weatherInfo.csv"))){
+		 try (BufferedReader br = new BufferedReader(new FileReader("weatherInfo.csv"))){
 		     String line;
 		     while ((line = br.readLine()) != null) {
 		         String[] values = line.split(",");
