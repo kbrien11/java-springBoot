@@ -56,9 +56,12 @@ locationRespository locationRepo;
 		try {
 			
 			
+		if(locationRepo.findByCity(city).size() <0) {
+			
 			List<location> lists = add.cities(city);
-			System.out.println(lists);
 			locationRepo.saveAllAndFlush(lists);
+			System.out.println(lists);
+			}
 			 if(locationRepo.findByCity(city).size() >0) {
 					int id = locationRepo.findByCity(city).get(0).getId();
 					int fave = locationRepo.findByCity(city).get(0).getFavorite();
