@@ -46,7 +46,9 @@ public class singleSearchApi {
 	            try {
 					JSONObject json = (JSONObject) parser.parse(jsonResponseData);
 					
+					data.add(id);
 					data.add(json.get("name"));
+					 data.add(fave);
 					 
 //					for(locati on x:location) {
 //						System.out.println(x);
