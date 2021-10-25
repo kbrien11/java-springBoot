@@ -23,7 +23,7 @@ public class singleSearchApi {
 
 
 	 @SuppressWarnings("rawtypes")
-	 public  Object apiData( String city) throws IOException{
+	 public  Object apiData(int id, String city , int fave) throws IOException{
 		ArrayList<Object> data = new ArrayList<Object>();
 		String ex = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&units=imperial&appid=27b3ec19c7d34c1bcca082098b7a60a7", city);
 	    URL quote_endpoint = new URL(ex);
