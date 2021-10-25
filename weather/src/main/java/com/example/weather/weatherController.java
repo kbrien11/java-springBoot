@@ -53,8 +53,8 @@ locationRespository locationRepo;
 		 
 		try {
 			
-			Object output = singleApi.apiData(city);
-			ex = output;
+			Object data = singleApi.apiData(city);
+			ex = data;
 
 	
 		
