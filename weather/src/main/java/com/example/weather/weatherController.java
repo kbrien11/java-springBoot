@@ -51,13 +51,13 @@ locationRespository locationRepo;
 		 
 		try {
 			
-			if(locationRepo.findAll().size()<=0) {
-				 List<location> lists = state.cities();
-			     locationRepo.saveAllAndFlush(lists);
-			}
-			else {
-				System.out.println(" citites have already been loaded");
-			}
+// 			if(locationRepo.findAll().size()<=0) {
+// 				 List<location> lists = state.cities();
+// 			     locationRepo.saveAllAndFlush(lists);
+// 			}
+// 			else {
+// 				System.out.println(" citites have already been loaded");
+// 			}
 		
 		     if(locationRepo.findByCity(city).size() >0) {
 		    		System.out.println(locationRepo.findByCity(city));
