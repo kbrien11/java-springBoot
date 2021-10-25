@@ -58,14 +58,11 @@ locationRespository locationRepo;
 			
 			List<location> lists = add.cities(city);
 			System.out.println(lists);
-			locationRepo.save(lists);
-			
-			 if(locationRepo.findByCity(city).size() >0) {
+			locationRepo.saveAllAndFlush(lists);
 			Object data = singleApi.apiData(city);
 			System.out.println(data);
-
 			ex = data;
-			 }
+			 
 	
 		
 		
