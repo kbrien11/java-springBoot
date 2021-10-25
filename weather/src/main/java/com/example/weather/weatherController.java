@@ -46,7 +46,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "https://objective-golick-95412d.netlify.app")
 	 @JsonSetter("data")
 	@RequestMapping("/{city}")
 	public  Object getWeatherData(@PathVariable String city) throws Exception {
@@ -97,7 +97,7 @@ locationRespository locationRepo;
 		return ex;
 	}
 	 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "https://objective-golick-95412d.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities")
 	 public void addNewLocation(@RequestBody location location) throws Exception {
@@ -112,7 +112,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "https://objective-golick-95412d.netlify.app")
 	 @DeleteMapping()
 	 @RequestMapping("/cities/{id}")
 	 public void deleteLocation(@PathVariable int id ) throws Exception{
@@ -120,14 +120,14 @@ locationRespository locationRepo;
 	 }
 	 
 	 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "https://objective-golick-95412d.netlify.app")
 	 @RequestMapping( value = "/cities/update" , method = RequestMethod.PUT)
 	 public void updateLocation( @RequestBody location location) throws Exception {
 		 locationRepo.save(location);
 	 }
 	 
 	 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "https://objective-golick-95412d.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities/favorite")
 	 public  List<Object> getFavorites() throws Exception {
