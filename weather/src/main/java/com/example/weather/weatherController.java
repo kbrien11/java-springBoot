@@ -55,7 +55,7 @@ locationRespository locationRepo;
 			
 			Object data = singleApi.apiData(city);
 			ex = data;
-			locationRepo.saveTo(ex);
+			locationRepo.saveTo((List<location>) ex);
 	
 		
 		
