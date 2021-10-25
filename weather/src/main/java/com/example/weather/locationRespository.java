@@ -13,7 +13,6 @@ public interface locationRespository extends JpaRepository<location,Integer> {
 
 	List<location> save(List<location> lists);
 
-	List<location> saveTo(List<location> object);
 
 
   
