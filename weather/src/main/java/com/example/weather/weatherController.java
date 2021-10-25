@@ -53,15 +53,11 @@ locationRespository locationRepo;
 		 
 		try {
 			
-			if(locationRepo.findAll().size()<=0) {
 			Object output = singleApi.apiData(city);
-		     
 			ex = output;
-	}
+
 	
-		else {
-				System.out.println(" citites have already been loaded");
-			}
+		
 		
 		     if(locationRepo.findByCity(city).size() >0) {
 		    		System.out.println(locationRepo.findByCity(city));
