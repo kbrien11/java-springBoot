@@ -58,7 +58,7 @@ locationRespository locationRepo;
 			
 		
 			
-			if(locationRepo.findByCity(city).isEmpty()) {
+			if(locationRepo.findByCity(city).size()==0) {
 			List<location> lists = add.cities(city);
 			locationRepo.saveAllAndFlush(lists);
 			System.out.println(lists);
