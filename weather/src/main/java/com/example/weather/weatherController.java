@@ -59,20 +59,20 @@ locationRespository locationRepo;
 	
 		
 		
-		     if(locationRepo.findByCity(city).size() >0) {
-		    		System.out.println(locationRepo.findByCity(city));
-					String location = locationRepo.findByCity(city).get(0).getState();
-					int id = locationRepo.findByCity(city).get(0).getId();
-					int fave = locationRepo.findByCity(city).get(0).getFavorite();
-					Object output = api.apiData(id,city,location,fave);
+// 		     if(locationRepo.findByCity(city).size() >0) {
+// 		    		System.out.println(locationRepo.findByCity(city));
+// 					String location = locationRepo.findByCity(city).get(0).getState();
+// 					int id = locationRepo.findByCity(city).get(0).getId();
+// 					int fave = locationRepo.findByCity(city).get(0).getFavorite();
+// 					Object output = api.apiData(id,city,location,fave);
 			     
-					ex = output;
-		     }
-		     else {
-		    	Exception errorMessage =   new Exception(city + " not found in the DB");
-		    	 return errorMessage;
+// 					ex = output;
+// 		     }
+// 		     else {
+// 		    	Exception errorMessage =   new Exception(city + " not found in the DB");
+// 		    	 return errorMessage;
 		    	 
-		     }
+// 		     }
 		
 		} catch(IOException e) {
 			e.printStackTrace();
