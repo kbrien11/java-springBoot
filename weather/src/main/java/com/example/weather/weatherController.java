@@ -58,9 +58,11 @@ locationRespository locationRepo;
 			
 		
 			
+			if(locationRepo.findByCity(city).isEmpty()) {
 			List<location> lists = add.cities(city);
 			locationRepo.saveAllAndFlush(lists);
 			System.out.println(lists);
+			}
 			
 			 if(locationRepo.findByCity(city).size() >0) {
 					int id = locationRepo.findByCity(city).get(0).getId();
