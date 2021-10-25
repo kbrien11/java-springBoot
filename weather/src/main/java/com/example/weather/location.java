@@ -29,6 +29,11 @@ public class location {
 		
 	}
 	
+	public location(String city) {
+		this.city = city;
+	}
+	
+	
 	public location(String city , String state) {
 		
 		this.city = city;
