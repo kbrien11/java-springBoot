@@ -46,7 +46,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @JsonSetter("data")
 	@RequestMapping("/{city}")
 	public  Object getWeatherData(@PathVariable String city) throws Exception {
@@ -72,23 +72,6 @@ locationRespository locationRepo;
 					ex = data;
 			 }
 			 
-	
-		
-		
-// 		     if(locationRepo.findByCity(city).size() >0) {
-// 		    		System.out.println(locationRepo.findByCity(city));
-// 					String location = locationRepo.findByCity(city).get(0).getState();
-// 					int id = locationRepo.findByCity(city).get(0).getId();
-// 					int fave = locationRepo.findByCity(city).get(0).getFavorite();
-// 					Object output = api.apiData(id,city,location,fave);
-			     
-// 					ex = output;
-// 		     }
-// 		     else {
-// 		    	Exception errorMessage =   new Exception(city + " not found in the DB");
-// 		    	 return errorMessage;
-		    	 
-// 		     }
 		
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -97,14 +80,14 @@ locationRespository locationRepo;
 		return ex;
 	}
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities")
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @RequestMapping("/")
 	 public String home()  {
 		 return " hello world";
@@ -112,7 +95,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @DeleteMapping()
 	 @RequestMapping("/cities/{id}")
 	 public void deleteLocation(@PathVariable int id ) throws Exception{
@@ -120,14 +103,14 @@ locationRespository locationRepo;
 	 }
 	 
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @RequestMapping( value = "/cities/update" , method = RequestMethod.PUT)
 	 public void updateLocation( @RequestBody location location) throws Exception {
 		 locationRepo.save(location);
 	 }
 	 
 	 
-	 @CrossOrigin(origins = "https://practical-mccarthy-5e1974.netlify.app")
+	 @CrossOrigin(origins = "https://hardcore-carson-d41f4e.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities/favorite")
 	 public  List<Object> getFavorites() throws Exception {
