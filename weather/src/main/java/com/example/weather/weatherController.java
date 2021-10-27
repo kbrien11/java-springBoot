@@ -85,7 +85,7 @@ locationRespository locationRepo;
 		 service.addNewLocation(location);
 	 }
 	 
-	 @CrossOrigin(origins = https://hungry-goldstine-6e8eba.netlify.app")
+	 @CrossOrigin(origins = "https://hungry-goldstine-6e8eba.netlify.app")
 	 @RequestMapping("/")
 	 public String home()  {
 		 return " hello world";
