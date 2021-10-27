@@ -73,6 +73,10 @@ public class singleSearchApi {
 		                data.add(descriptionList.get(i).get("icon"));
 		                
 					}
+			    
+			    Object coord = json.get("coord");
+				 data.add((((HashMap) coord).get("lat")));
+				 data.add((((HashMap) coord).get("lon")));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
