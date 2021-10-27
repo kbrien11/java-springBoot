@@ -45,7 +45,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "https://laughing-mayer-109fc3.netlify.app")
+	 @CrossOrigin(origins = "https://gifted-cori-dde65a.netlify.app")
 	 @JsonSetter("data")
 	@RequestMapping("/{city}")
 	public  Object getWeatherData(@PathVariable String city) throws Exception {
@@ -79,14 +79,14 @@ locationRespository locationRepo;
 		return ex;
 	}
 	 
-	 @CrossOrigin(origins = "https://laughing-mayer-109fc3.netlify.app")
+	 @CrossOrigin(origins = "https://gifted-cori-dde65a.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities")
 	 public void addNewLocation(@RequestBody location location) throws Exception {
 		 service.addNewLocation(location);
 	 }
 	 
-	 @CrossOrigin(origins = "https://laughing-mayer-109fc3.netlify.app")
+	 @CrossOrigin(origins = "https://gifted-cori-dde65a.netlify.app")
 	 @RequestMapping("/")
 	 public String home()  {
 		 return " hello world";
@@ -94,7 +94,7 @@ locationRespository locationRepo;
 	 
 	 
 	 
-	 @CrossOrigin(origins = "https://laughing-mayer-109fc3.netlify.app")
+	 @CrossOrigin(origins = "https://gifted-cori-dde65a.netlify.app")
 	 @DeleteMapping()
 	 @RequestMapping("/cities/{id}")
 	 public void deleteLocation(@PathVariable int id ) throws Exception{
@@ -109,7 +109,7 @@ locationRespository locationRepo;
 	 }
 	 
 	 
-	 @CrossOrigin(origins = "https://laughing-mayer-109fc3.netlify.app")
+	 @CrossOrigin(origins = "https://gifted-cori-dde65a.netlify.app")
 	 @PostMapping()
 	 @RequestMapping("/cities/favorite")
 	 public  List<Object> getFavorites() throws Exception {
