@@ -28,7 +28,6 @@ public class weatherController {
 
 		public static api api  = new api();
 	 
-	 public state state = new state();
 	
 		 public addCityToDatabase add = new addCityToDatabase();
 	
