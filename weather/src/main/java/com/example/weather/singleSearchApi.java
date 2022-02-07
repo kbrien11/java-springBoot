@@ -69,6 +69,7 @@ public class singleSearchApi {
 					ArrayList<HashMap> descriptionList = new ArrayList<HashMap>();
 					descriptionList.addAll((Collection<? extends HashMap>) weather);
 					for(int i =0;i<descriptionList.size();i++) {
+						System.out.println(descriptionList);
 		                data.add(descriptionList.get(i).get("description"));
 		                data.add(descriptionList.get(i).get("icon"));
 		                
