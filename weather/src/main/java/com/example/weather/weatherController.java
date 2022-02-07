@@ -61,9 +61,11 @@ locationRespository locationRepo;
 			List<location> lists = add.cities(city);
 			locationRepo.saveAllAndFlush(lists);
 			System.out.println(lists);
+			System.out.println("City getting added to data");
 			}
 			
 			 if(locationRepo.findByCity(city).size() >0) {
+				        System.out.println("City fouund in DB");
 					int id = locationRepo.findByCity(city).get(0).getId();
 					int fave = locationRepo.findByCity(city).get(0).getFavorite();
 					Object data = singleApi.apiData(id,city,fave);
@@ -75,7 +77,7 @@ locationRespository locationRepo;
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(ex);
 		return ex;
 	}
 	 
